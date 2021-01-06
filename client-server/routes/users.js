@@ -30,14 +30,15 @@ router.post('/', function(req, res, next) {
   })
 });
 
-router.put('/', function(req, res, next) {
+router.put('/:id', function(req, res, next) {
   client.put(`/users/${req.params.id}`, req.body, function (err, request, response, obj) {
+    console.log("entrou no put")
     assert.ifError(err);
     res.json(obj);
   })
 });
 
-router.delete('/', function(req, res, next) {
+router.delete('/:id', function(req, res, next) {
   client.del(`/users/${req.params.id}`, function (err, request, response, obj) {
     assert.ifError(err);
     res.json(obj);

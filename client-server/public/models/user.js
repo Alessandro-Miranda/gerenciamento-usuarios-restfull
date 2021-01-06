@@ -74,7 +74,7 @@ class User
                     break;
 
                 default:
-                    this[name] = json[name];
+                    if(name.substring(0, 1) === '_') this[name] = json[name];
             }
         }
     }
@@ -115,9 +115,9 @@ class User
         return new Promise((resolve, reject) => {
             let promise;
             
-            if(this._id)
+            if(this.id)
             {
-                promise = HttpRequest.put(`/users/${this._id}`, this.toJSON());
+                promise = HttpRequest.put(`/users/${this.id}`, this.toJSON());
             }
             else
             {

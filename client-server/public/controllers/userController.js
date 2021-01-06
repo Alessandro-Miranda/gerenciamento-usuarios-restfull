@@ -261,8 +261,8 @@ class UserController
         [...this.tableEl.children].forEach(tr => {
             numberUsers++;
             
-            // let user = JSON.parse(tr.dataset.user)
-            // if(user._admin) numberAdmin++;
+            let user = JSON.parse(tr.dataset.user)
+            if(user._admin) numberAdmin++;
         });
 
         document.querySelector("#number-users").textContent = numberUsers;
