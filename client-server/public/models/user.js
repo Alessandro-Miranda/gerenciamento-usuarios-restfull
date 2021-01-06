@@ -100,27 +100,35 @@ class User
         localStorage.setItem("usersID", id);
         return id;
     }
+    toJSON()
+    {
+        let json = {};
+
+        Object.keys(this).forEach(key => {
+            this[key] !== undefined && (json[key] = this[key]);
+        });
+
+        return json;
+    }
     save()
     {
-        let users = User.getUsersStorage();
-        if(this.id > 0)
-        {
-            users.map(u =>
+        return new Promise((resolve, reject) => {
+            let promise;
+            
+            if(this._id)
             {
-                if(u._id == this._id)
-                {
-                    Object.assign(u, this);
-                }
-                return u;
-            });
-        }
-        else
-        {
-            this._id = this.getNewId();
-            users.push(this);
-        }
-        // sessionStorage.setItem("users",JSON.stringify(users));
-        localStorage.setItem("users", JSON.stringify(users));
+                promise = HttpRequest.put(`/users/${this._id}`, this.toJSON());
+            }
+            else
+            {
+                promise = HttpRequest.post(`/users`, this.toJSON());
+            }
+    
+            promise.then(data => {
+                this.loadFromJSON(data);
+                resolve(this);
+            }).catch(e => reject(e))
+        });
     }
     remove()
     {
