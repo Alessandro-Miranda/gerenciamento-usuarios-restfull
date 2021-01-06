@@ -82,10 +82,8 @@ class User
     {
         let users = [];
 
-        // if(sessionStorage.getItem("users"))
         if(localStorage.getItem("users"))
         {
-            // users = JSON.parse(sessionStorage.getItem("users"));
             users = JSON.parse(localStorage.getItem("users"));
         }
 
