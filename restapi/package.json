@@ -1,0 +1,26 @@
+{
+  "name": "restfull",
+  "version": "1.0.0",
+  "description": "introdução ao nodejs no lado do servidor. Intodução da criação de uma API rest para utilização no projeto de gerenciamento de usuários",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alessandro-Miranda/restfull.git"
+  },
+  "author": "Alessandro Lima de Miranda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alessandro-Miranda/restfull/issues"
+  },
+  "homepage": "https://github.com/Alessandro-Miranda/restfull#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "consign": "^0.1.6",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2",
+    "nedb": "^1.8.0"
+  }
+}
