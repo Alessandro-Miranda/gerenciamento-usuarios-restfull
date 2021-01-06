@@ -30,7 +30,6 @@ class HttpRequest
 
                 try
                 {
-                    console.log(obj);
                     obj = JSON.parse(ajax.responseText);
                 }
                 catch(e)
