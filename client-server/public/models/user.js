@@ -59,6 +59,10 @@ class User
         this._photo = value;
     }
 
+    set id(value)
+    {
+        this._id = value;
+    }
     loadFromJSON(json)
     {
         for(let name in json)

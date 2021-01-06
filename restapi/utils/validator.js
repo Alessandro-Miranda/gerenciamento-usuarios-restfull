@@ -2,8 +2,8 @@ const { check, validationResult } = require("express-validator");
 
 const userValidation = {
     validations: [
-        check('name', 'O nome é obrigatório.').notEmpty(),
-        check('email', 'O email é inválido.').notEmpty().isEmail()
+        check('_name', 'O nome é obrigatório.').notEmpty(),
+        check('_email', 'O email é inválido.').notEmpty().isEmail()
     ],
     errors: (app, req, res) => {
         let errors = validationResult(req); 
