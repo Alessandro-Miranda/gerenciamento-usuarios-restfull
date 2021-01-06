@@ -9,37 +9,37 @@ var client = restify.createJSONClient({
 });
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  client.get('/users', function (err, request, response, obj) {
+router.get('/', function(req, res, _next) {
+  client.get('/users', function (err, _request, _response, obj) {
     assert.ifError(err);
     res.json(obj);
   })
 });
 
-router.get('/:id', function(req, res, next) {
-  client.get(`/users/${req.params.id}`, function (err, request, response, obj) {
+router.get('/:id', function(req, res, _next) {
+  client.get(`/users/${req.params.id}`, function (err, _request, _response, obj) {
     assert.ifError(err);
     res.json(obj);
   })
 });
 
-router.post('/', function(req, res, next) {
-  client.post(`/users`, req.body, function (err, request, response, obj) {
+router.post('/', function(req, res, _next) {
+  client.post(`/users`, req.body, function (err, _request, _response, obj) {
     assert.ifError(err);
     res.json(obj);
   })
 });
 
-router.put('/:id', function(req, res, next) {
-  client.put(`/users/${req.params.id}`, req.body, function (err, request, response, obj) {
+router.put('/:id', function(req, res, _next) {
+  client.put(`/users/${req.params.id}`, req.body, function (err, _request, _response, obj) {
     console.log("entrou no put")
     assert.ifError(err);
     res.json(obj);
   })
 });
 
-router.delete('/:id', function(req, res, next) {
-  client.del(`/users/${req.params.id}`, function (err, request, response, obj) {
+router.delete('/:id', function(req, res, _next) {
+  client.del(`/users/${req.params.id}`, function (err, _request, _response, obj) {
     assert.ifError(err);
     res.json(obj);
   })
