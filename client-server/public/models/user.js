@@ -80,23 +80,7 @@ class User
     }
     static getUsersStorage()
     {
-        let users = [];
-
-        if(localStorage.getItem("users"))
-        {
-            users = JSON.parse(localStorage.getItem("users"));
-        }
-
-        return users;
-    }
-    getNewId()
-    {
-        let id = parseInt(localStorage.getItem("usersID"));
-
-        if(!id) id = 0;
-        id++;
-        localStorage.setItem("usersID", id);
-        return id;
+       return HttpRequest.get('/users');
     }
     toJSON()
     {
@@ -130,15 +114,17 @@ class User
     }
     remove()
     {
-        let users = User.getUsersStorage();
-
-        users.forEach((userData, index) => {
-            if(this._id == userData._id)
-            {
-                users.splice(index, 1);
-            }
+        return HttpRequest.delete(`/users/${this.id}`);
+    }
+    selectAll()
+    {
+        HttpRequest.get("/users").then(data => {
+            data.users.forEach(dataUser => {
+                let user = new User();
+    
+                user.loadFromJSON(dataUser);
+                this.addLine(user);
+            });
         });
-
-        localStorage.setItem("users", JSON.stringify(users));
     }
 }
